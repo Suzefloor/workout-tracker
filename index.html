@@ -67,50 +67,21 @@
             gap: 20px;
         }
 
-        h1::before {
+        h1::before, h1::after {
             content: '';
             width: 60px;
             height: 60px;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8IS0tIE91dGVyIGJvcmRlciAtLT4KICA8cmVjdCB4PSIyIiB5PSIxOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjI0IiBmaWxsPSIjMzMzIi8+CiAgPHJlY3QgeD0iNDgiIHk9IjE4IiB3aWR0aD0iMTAiIGhlaWdodD0iMjQiIGZpbGw9IiMzMzMiLz4KICAKICA8IS0tIElubmVyIHdlaWdodHMgLS0+CiAgPHJlY3QgeD0iNCIgeT0iMjAiIHdpZHRoPSI2IiBoZWlnaHQ9IjIwIiBmaWxsPSIjY2NjIi8+CiAgPHJlY3QgeD0iNTAiIHk9IjIwIiB3aWR0aD0iNiIgaGVpZ2h0PSIyMCIgZmlsbD0iI2NjYyIvPgogIAogIDwhLS0gQ29ubmVjdG9ycyAtLT4KICA8cmVjdCB4PSIxMiIgeT0iMjciIHdpZHRoPSI0IiBoZWlnaHQ9IjYiIGZpbGw9IiM2NjYiLz4KICA8cmVjdCB4PSI0NCIgeT0iMjciIHdpZHRoPSI0IiBoZWlnaHQ9IjYiIGZpbGw9IiM2NjYiLz4KICAKICA8IS0tIEJhciAtLT4KICA8cmVjdCB4PSIxNiIgeT0iMjgiIHdpZHRoPSIyOCIgaGVpZ2h0PSI0IiBmaWxsPSIjOTk5Ii8+CiAgPHJlY3QgeD0iMTYiIHk9IjI4IiB3aWR0aD0iMjgiIGhlaWdodD0iMSIgZmlsbD0iI2JiYiIvPgo8L3N2Zz4=');
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSIyIiB5PSIxOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjI0IiBmaWxsPSIjMzMzIi8+CiAgPHJlY3QgeD0iNDgiIHk9IjE4IiB3aWR0aD0iMTAiIGhlaWdodD0iMjQiIGZpbGw9IiMzMzMiLz4KICA8cmVjdCB4PSI0IiB5PSIyMCIgd2lkdGg9IjYiIGhlaWdodD0iMjAiIGZpbGw9IiNjY2MiLz4KICA8cmVjdCB4PSI1MCIgeT0iMjAiIHdpZHRoPSI2IiBoZWlnaHQ9IjIwIiBmaWxsPSIjY2NjIi8+CiAgPHJlY3QgeD0iMTIiIHk9IjI3IiB3aWR0aD0iNCIgaGVpZ2h0PSI2IiBmaWxsPSIjNjY2Ii8+CiAgPHJlY3QgeD0iNDQiIHk9IjI3IiB3aWR0aD0iNCIgaGVpZ2h0PSI2IiBmaWxsPSIjNjY2Ii8+CiAgPHJlY3QgeD0iMTYiIHk9IjI4IiB3aWR0aD0iMjgiIGhlaWdodD0iNCIgZmlsbD0iIzk5OSIvPgogIDxyZWN0IHg9IjE2IiB5PSIyOCIgd2lkdGg9IjI4IiBoZWlnaHQ9IjEiIGZpbGw9IiNiYmIiLz4KPC9zdmc+');
             background-size: contain;
             filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
-        }
-
-        h1::after {
-            content: '';
-            width: 60px;
-            height: 60px;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8IS0tIE91dGVyIGJvcmRlciAtLT4KICA8cmVjdCB4PSIyIiB5PSIxOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjI0IiBmaWxsPSIjMzMzIi8+CiAgPHJlY3QgeD0iNDgiIHk9IjE4IiB3aWR0aD0iMTAiIGhlaWdodD0iMjQiIGZpbGw9IiMzMzMiLz4KICAKICA8IS0tIElubmVyIHdlaWdodHMgLS0+CiAgPHJlY3QgeD0iNCIgeT0iMjAiIHdpZHRoPSI2IiBoZWlnaHQ9IjIwIiBmaWxsPSIjY2NjIi8+CiAgPHJlY3QgeD0iNTAiIHk9IjIwIiB3aWR0aD0iNiIgaGVpZ2h0PSIyMCIgZmlsbD0iI2NjYyIvPgogIAogIDwhLS0gQ29ubmVjdG9ycyAtLT4KICA8cmVjdCB4PSIxMiIgeT0iMjciIHdpZHRoPSI0IiBoZWlnaHQ9IjYiIGZpbGw9IiM2NjYiLz4KICA8cmVjdCB4PSI0NCIgeT0iMjciIHdpZHRoPSI0IiBoZWlnaHQ9IjYiIGZpbGw9IiM2NjYiLz4KICAKICA8IS0tIEJhciAtLT4KICA8cmVjdCB4PSIxNiIgeT0iMjgiIHdpZHRoPSIyOCIgaGVpZ2h0PSI0IiBmaWxsPSIjOTk5Ii8+CiAgPHJlY3QgeD0iMTYiIHk9IjI4IiB3aWR0aD0iMjgiIGhlaWdodD0iMSIgZmlsbD0iI2JiYiIvPgo8L3N2Zz4=');
-            background-size: contain;
-            filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
-        }
-
-        @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.95; }
-            75% { opacity: 0.97; }
         }
 
         .card {
             background: rgba(50, 50, 80, 0.95);
             border: 3px solid #ffcc00;
-            border-radius: 0;
             padding: 25px;
-            box-shadow: 
-                5px 5px 0 rgba(255, 102, 0, 0.5);
+            box-shadow: 5px 5px 0 rgba(255, 102, 0, 0.5);
             margin-bottom: 30px;
-            position: relative;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: transparent;
-            z-index: -1;
         }
 
         h2 {
@@ -143,22 +114,12 @@
             color: #ffffff;
             font-family: 'Consolas', 'Monaco', monospace;
             font-size: 16px;
-            transition: all 0.3s;
         }
 
         input:focus, select:focus {
             outline: none;
             border-color: #ffcc00;
             box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.3);
-        }
-
-        input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        select option {
-            background: #1a1a2e;
-            color: #ffffff;
         }
 
         button {
@@ -168,24 +129,15 @@
             padding: 12px 30px;
             font-family: 'Press Start 2P', monospace;
             font-size: 12px;
-            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s;
             text-transform: uppercase;
             letter-spacing: 2px;
             box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
-            position: relative;
         }
 
         button:hover {
             transform: translate(-2px, -2px);
             box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
-            background: linear-gradient(180deg, #ff7722, #dd4411);
-        }
-
-        button:active {
-            transform: translate(0, 0);
-            box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
         }
 
         table {
@@ -205,7 +157,6 @@
             color: #ffcc00;
             font-family: 'Press Start 2P', monospace;
             font-size: 0.7em;
-            text-transform: uppercase;
         }
 
         td {
@@ -222,10 +173,6 @@
             padding: 8px 15px;
             font-size: 10px;
             border: 2px solid #ff6666;
-        }
-
-        .delete-btn:hover {
-            background: linear-gradient(180deg, #dd1111, #aa0000);
         }
 
         .filter-section {
@@ -253,41 +200,13 @@
             color: #ffffff;
             padding: 20px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
             box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(255, 255, 255, 0.05) 10px,
-                rgba(255, 255, 255, 0.05) 20px
-            );
-            animation: gridMove 20s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(20px, 20px); }
         }
 
         .stat-value {
             font-family: 'Press Start 2P', monospace;
             font-size: 1.8em;
-            font-weight: 700;
             margin: 10px 0;
-            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
-            position: relative;
-            z-index: 1;
             color: #ffcc00;
         }
 
@@ -295,15 +214,6 @@
             font-size: 0.8em;
             text-transform: uppercase;
             letter-spacing: 1px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .empty-state {
-            text-align: center;
-            color: #00ccff;
-            padding: 40px;
-            font-style: italic;
         }
 
         .pr-grid {
@@ -319,61 +229,18 @@
             color: white;
             padding: 20px;
             box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pr-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(255, 255, 255, 0.05) 2px,
-                    rgba(255, 255, 255, 0.05) 4px
-                );
-            pointer-events: none;
         }
 
         .pr-exercise {
             font-family: 'Press Start 2P', monospace;
             font-size: 1em;
-            font-weight: 700;
             margin-bottom: 10px;
             color: #ffcc00;
-            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
-            position: relative;
-            z-index: 1;
-        }
-
-        .pr-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 2px solid rgba(255, 204, 0, 0.5);
-            position: relative;
-            z-index: 1;
         }
 
         .pr-weight {
             font-family: 'Press Start 2P', monospace;
             font-size: 2em;
-            font-weight: 700;
-            color: #ffffff;
-            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
-        }
-
-        .pr-info {
-            text-align: right;
-            font-size: 0.9em;
             color: #ffffff;
         }
 
@@ -385,72 +252,31 @@
             display: inline-block;
             margin-bottom: 5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 1;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #00ccff;
+            padding: 40px;
+            font-style: italic;
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 1.2em;
-                margin-bottom: 20px;
-                letter-spacing: 2px;
-                gap: 10px;
-            }
-
-            h1::before,
-            h1::after {
-                width: 40px;
-                height: 40px;
-            }
-
-            h2 {
-                font-size: 0.9em;
-            }
-
-            .card {
-                padding: 15px;
-            }
-
-            .filter-section {
-                flex-direction: column;
-            }
-
-            .filter-section select {
-                min-width: 100%;
-            }
-
-            table {
-                font-size: 12px;
-            }
-
-            th, td {
-                padding: 6px 4px;
-            }
-
-            th {
-                font-size: 0.5em;
-            }
-
-            .pr-grid {
-                grid-template-columns: 1fr;
-            }
-
-            button {
-                font-size: 12px;
-                padding: 10px 20px;
-            }
+            h1 { font-size: 1.2em; gap: 10px; }
+            h1::before, h1::after { width: 40px; height: 40px; }
+            h2 { font-size: 0.9em; }
+            .card { padding: 15px; }
+            table { font-size: 12px; }
+            th, td { padding: 6px 4px; }
+            th { font-size: 0.5em; }
+            button { font-size: 10px; }
         }
     </style>
 </head>
 <body>
     <div id="loginScreen" style="display: flex; align-items: center; justify-content: center; min-height: 100vh; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #2a2a3e; z-index: 9999;">
         <div style="background: rgba(50, 50, 80, 0.95); border: 3px solid #ffcc00; padding: 40px; box-shadow: 5px 5px 0 rgba(255, 102, 0, 0.5); max-width: 400px; width: 90%;">
-            <h2 style="font-family: 'Press Start 2P', monospace; color: #ffcc00; text-align: center; margin-bottom: 30px; font-size: 1.2em; text-shadow: 2px 2px 0 #ff6600;">WORKOUT TRACKER</h2>
+            <h2 style="font-family: 'Press Start 2P', monospace; color: #ffcc00; text-align: center; margin-bottom: 30px; font-size: 1.2em;">WORKOUT TRACKER</h2>
             <div style="margin-bottom: 20px;">
                 <label style="display: block; margin-bottom: 10px; color: #ffcc00; font-weight: 700; text-transform: uppercase; font-size: 0.9em;">Wachtwoord</label>
                 <input type="password" id="passwordInput" style="width: 100%; padding: 12px; border: 2px solid #00ccff; background: rgba(30, 30, 50, 0.9); color: #ffffff; font-family: 'Consolas', 'Monaco', monospace; font-size: 16px;" placeholder="Voer wachtwoord in">
@@ -459,6 +285,7 @@
             <p id="errorMsg" style="color: #ff6666; text-align: center; margin-top: 15px; display: none; font-size: 0.9em;"></p>
         </div>
     </div>
+
     <div id="mainApp" style="display: none;">
     <div class="container">
         <h1>WORKOUT TRACKER</h1>
@@ -475,17 +302,6 @@
                     <label for="exercise">Oefening</label>
                     <select id="exercise" required>
                         <option value="">Kies een oefening...</option>
-                        <option value="Bench Press">Bench Press</option>
-                        <option value="Bicep">Bicep</option>
-                        <option value="Chest Press">Chest Press</option>
-                        <option value="Deadlift">Deadlift</option>
-                        <option value="Hip Abduction">Hip Abduction</option>
-                        <option value="Hip Adduction">Hip Adduction</option>
-                        <option value="Lateral Pull">Lateral Pull</option>
-                        <option value="Leg Press">Leg Press</option>
-                        <option value="Pull Up">Pull Up</option>
-                        <option value="Squat">Squat</option>
-                        <option value="Tricep Push">Tricep Push</option>
                     </select>
                 </div>
 
@@ -542,32 +358,19 @@
                 </select>
                 <select id="filterExercise">
                     <option value="">Alle oefeningen</option>
-                    <option value="Bench Press">Bench Press</option>
-                    <option value="Bicep">Bicep</option>
-                    <option value="Chest Press">Chest Press</option>
-                    <option value="Deadlift">Deadlift</option>
-                    <option value="Hip Abduction">Hip Abduction</option>
-                    <option value="Hip Adduction">Hip Adduction</option>
-                    <option value="Lateral Pull">Lateral Pull</option>
-                    <option value="Leg Press">Leg Press</option>
-                    <option value="Pull Up">Pull Up</option>
-                    <option value="Squat">Squat</option>
-                    <option value="Tricep Push">Tricep Push</option>
                 </select>
             </div>
             <div id="resultsTable"></div>
         </div>
     </div>
+    </div>
 
     <script>
-        // Wachtwoord check
-        const CORRECT_PASSWORD = "gains2025"; // VERANDER DIT WACHTWOORD!
+        const CORRECT_PASSWORD = "gains2025";
         
         document.getElementById('loginBtn').addEventListener('click', checkPassword);
         document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-            }
+            if (e.key === 'Enter') checkPassword();
         });
         
         function checkPassword() {
@@ -575,23 +378,18 @@
             const errorMsg = document.getElementById('errorMsg');
             
             if (input === CORRECT_PASSWORD) {
-                // Correct password - show app
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('mainApp').style.display = 'block';
                 sessionStorage.setItem('loggedIn', 'true');
                 initializeApp();
             } else {
-                // Wrong password
                 errorMsg.textContent = 'ONJUIST WACHTWOORD';
                 errorMsg.style.display = 'block';
                 document.getElementById('passwordInput').value = '';
-                setTimeout(() => {
-                    errorMsg.style.display = 'none';
-                }, 3000);
+                setTimeout(() => errorMsg.style.display = 'none', 3000);
             }
         }
         
-        // Check if already logged in this session
         if (sessionStorage.getItem('loggedIn') === 'true') {
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('mainApp').style.display = 'block';
@@ -599,290 +397,191 @@
         }
         
         function initializeApp() {
-        // Firebase configuratie
-        const firebaseConfig = {
-            apiKey: "AIzaSyDDgyLXB6hnuiWctR5eUxP6WFqFx5cG0lM",
-            authDomain: "workout-tracker-1e2fa.firebaseapp.com",
-            databaseURL: "https://workout-tracker-1e2fa-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "workout-tracker-1e2fa",
-            storageBucket: "workout-tracker-1e2fa.firebasestorage.app",
-            messagingSenderId: "174793485434",
-            appId: "1:174793485434:web:050931e9f3737157d7dfc3"
-        };
+            const firebaseConfig = {
+                apiKey: "AIzaSyDDgyLXB6hnuiWctR5eUxP6WFqFx5cG0lM",
+                authDomain: "workout-tracker-1e2fa.firebaseapp.com",
+                databaseURL: "https://workout-tracker-1e2fa-default-rtdb.europe-west1.firebasedatabase.app",
+                projectId: "workout-tracker-1e2fa",
+                storageBucket: "workout-tracker-1e2fa.firebasestorage.app",
+                messagingSenderId: "174793485434",
+                appId: "1:174793485434:web:050931e9f3737157d7dfc3"
+            };
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-        
-        // Data arrays
-        let workouts = [];
-        let customExercises = [];
-        
-        // Standaard oefeningen
-        const defaultExercises = ['Bench Press', 'Bicep', 'Chest Press', 'Deadlift', 'Hip Abduction', 'Hip Adduction', 'Lateral Pull', 'Leg Press', 'Pull Up', 'Squat', 'Tricep Push'];
-        
-        // Alle oefeningen combineren en sorteren
-        function getAllExercises() {
-            return [...defaultExercises, ...customExercises].sort();
-        }
-        
-        // Oefeningen dropdown updaten
-        function updateExerciseDropdowns() {
-            const exercises = getAllExercises();
-            const exerciseSelect = document.getElementById('exercise');
-            const filterExerciseSelect = document.getElementById('filterExercise');
+            firebase.initializeApp(firebaseConfig);
+            const database = firebase.database();
             
-            // Update main dropdown
-            exerciseSelect.innerHTML = '<option value="">Kies een oefening...</option>' +
-                exercises.map(ex => `<option value="${ex}">${ex}</option>`).join('');
+            let workouts = [];
+            let customExercises = [];
             
-            // Update filter dropdown
-            filterExerciseSelect.innerHTML = '<option value="">Alle oefeningen</option>' +
-                exercises.map(ex => `<option value="${ex}">${ex}</option>`).join('');
-        }
-        
-        // Load workouts from Firebase
-        function loadWorkouts() {
+            const defaultExercises = ['Bench Press', 'Bicep', 'Chest Press', 'Deadlift', 'Hip Abduction', 'Hip Adduction', 'Lateral Pull', 'Leg Press', 'Pull Up', 'Squat', 'Tricep Push'];
+            
+            function getAllExercises() {
+                return [...defaultExercises, ...customExercises].sort();
+            }
+            
+            function updateExerciseDropdowns() {
+                const exercises = getAllExercises();
+                document.getElementById('exercise').innerHTML = '<option value="">Kies een oefening...</option>' +
+                    exercises.map(ex => `<option value="${ex}">${ex}</option>`).join('');
+                document.getElementById('filterExercise').innerHTML = '<option value="">Alle oefeningen</option>' +
+                    exercises.map(ex => `<option value="${ex}">${ex}</option>`).join('');
+            }
+            
             database.ref('workouts').on('value', (snapshot) => {
                 const data = snapshot.val();
-                workouts = data ? Object.keys(data).map(key => ({
-                    id: key,
-                    ...data[key]
-                })) : [];
+                workouts = data ? Object.keys(data).map(key => ({ id: key, ...data[key] })) : [];
                 updateDisplay();
             });
-        }
-        
-        // Load custom exercises from Firebase
-        function loadCustomExercises() {
+            
             database.ref('customExercises').on('value', (snapshot) => {
                 const data = snapshot.val();
                 customExercises = data ? Object.values(data) : [];
                 updateExerciseDropdowns();
             });
-        }
-        
-        // Nieuwe oefening toevoegen
-        document.getElementById('addExerciseBtn').addEventListener('click', function() {
-            const customExerciseInput = document.getElementById('customExercise');
-            const exerciseName = customExerciseInput.value.trim();
             
-            if (!exerciseName) {
-                alert('Voer een oefening naam in');
-                return;
-            }
-            
-            const allExercises = getAllExercises();
-            if (allExercises.includes(exerciseName)) {
-                alert('Deze oefening bestaat al');
-                return;
-            }
-            
-            // Add to Firebase
-            database.ref('customExercises').push(exerciseName);
-            customExerciseInput.value = '';
-        });
-
-        // Zet vandaag als standaard datum
-        document.getElementById('date').valueAsDate = new Date();
-
-        // Form submit
-        document.getElementById('workoutForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const workout = {
-                name: document.getElementById('name').value,
-                exercise: document.getElementById('exercise').value,
-                repType: document.getElementById('repType').value,
-                weight: parseFloat(document.getElementById('weight').value),
-                date: document.getElementById('date').value
-            };
-
-            // Save to Firebase
-            database.ref('workouts').push(workout);
-            
-            // Reset form
-            this.reset();
-            document.getElementById('date').valueAsDate = new Date();
-        });
-
-        function deleteWorkout(id) {
-            if (confirm('Weet je zeker dat je dit resultaat wilt verwijderen?')) {
-                database.ref('workouts/' + id).remove();
-            }
-        }
-
-        function updateDisplay() {
-            updatePRs();
-            updateStats();
-            updateTable();
-            updateFilters();
-        }
-
-        function updatePRs() {
-            const prDisplay = document.getElementById('prDisplay');
-            const prFilterName = document.getElementById('prFilterName').value;
-
-            if (!prFilterName) {
-                prDisplay.innerHTML = '<div class="empty-state">Kies een persoon om PR\'s te zien</div>';
-                return;
-            }
-
-            const personWorkouts = workouts.filter(w => w.name === prFilterName);
-
-            if (personWorkouts.length === 0) {
-                prDisplay.innerHTML = '<div class="empty-state">Nog geen resultaten voor deze persoon</div>';
-                return;
-            }
-
-            const exercises = getAllExercises();
-            const repTypes = ['Single Rep', 'Multiple Reps'];
-            
-            let prHTML = '<div class="pr-grid">';
-
-            exercises.forEach(exercise => {
-                repTypes.forEach(repType => {
-                    const exerciseWorkouts = personWorkouts.filter(w => 
-                        w.exercise === exercise && w.repType === repType
-                    );
-
-                    if (exerciseWorkouts.length > 0) {
-                        const pr = exerciseWorkouts.reduce((max, w) => 
-                            w.weight > max.weight ? w : max
-                        );
-
-                        prHTML += `
-                            <div class="pr-card">
-                                <div class="pr-exercise">${exercise}</div>
-                                <div class="pr-type">${repType}</div>
-                                <div class="pr-details">
-                                    <div class="pr-weight">${pr.weight} kg</div>
-                                    <div class="pr-info">
-                                        ${new Date(pr.date).toLocaleDateString('nl-NL')}
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    }
-                });
+            document.getElementById('addExerciseBtn').addEventListener('click', function() {
+                const input = document.getElementById('customExercise');
+                const name = input.value.trim();
+                if (!name) return alert('Voer een oefening naam in');
+                if (getAllExercises().includes(name)) return alert('Deze oefening bestaat al');
+                database.ref('customExercises').push(name);
+                input.value = '';
             });
 
-            prHTML += '</div>';
-            prDisplay.innerHTML = prHTML;
-        }
+            document.getElementById('date').valueAsDate = new Date();
 
-        function updateStats() {
-            const statsDiv = document.getElementById('stats');
-            
-            if (workouts.length === 0) {
-                statsDiv.innerHTML = '<div class="empty-state">Nog geen resultaten toegevoegd</div>';
-                return;
+            document.getElementById('workoutForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                database.ref('workouts').push({
+                    name: document.getElementById('name').value,
+                    exercise: document.getElementById('exercise').value,
+                    repType: document.getElementById('repType').value,
+                    weight: parseFloat(document.getElementById('weight').value),
+                    date: document.getElementById('date').value
+                });
+                this.reset();
+                document.getElementById('date').valueAsDate = new Date();
+            });
+
+            window.deleteWorkout = function(id) {
+                if (confirm('Weet je zeker dat je dit resultaat wilt verwijderen?')) {
+                    database.ref('workouts/' + id).remove();
+                }
+            };
+
+            function updateDisplay() {
+                updatePRs();
+                updateStats();
+                updateTable();
+                updateFilters();
             }
 
-            const totalWorkouts = workouts.length;
-            const totalWeight = workouts.reduce((sum, w) => sum + w.weight, 0);
-            const uniquePersons = [...new Set(workouts.map(w => w.name))].length;
+            function updatePRs() {
+                const prDisplay = document.getElementById('prDisplay');
+                const prFilterName = document.getElementById('prFilterName').value;
 
-            statsDiv.innerHTML = `
-                <div class="stat-card">
-                    <div class="stat-label">Totaal sessies</div>
-                    <div class="stat-value">${totalWorkouts}</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Totaal gewicht</div>
-                    <div class="stat-value">${totalWeight.toFixed(1)} kg</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Sporters</div>
-                    <div class="stat-value">${uniquePersons}</div>
-                </div>
-            `;
-        }
+                if (!prFilterName) {
+                    prDisplay.innerHTML = '<div class="empty-state">Kies een persoon om PR\'s te zien</div>';
+                    return;
+                }
 
-        function updateFilters() {
-            const filterName = document.getElementById('filterName');
-            const prFilterName = document.getElementById('prFilterName');
-            const currentNameValue = filterName.value;
-            const currentPRNameValue = prFilterName.value;
-            
-            const uniqueNames = [...new Set(workouts.map(w => w.name))].sort();
-            
-            const nameOptions = '<option value="">Alle personen</option>' +
-                uniqueNames.map(name => `<option value="${name}">${name}</option>`).join('');
-            
-            filterName.innerHTML = nameOptions;
-            filterName.value = currentNameValue;
+                const personWorkouts = workouts.filter(w => w.name === prFilterName);
+                if (personWorkouts.length === 0) {
+                    prDisplay.innerHTML = '<div class="empty-state">Nog geen resultaten voor deze persoon</div>';
+                    return;
+                }
 
-            const prNameOptions = '<option value="">Kies persoon...</option>' +
-                uniqueNames.map(name => `<option value="${name}">${name}</option>`).join('');
-            
-            prFilterName.innerHTML = prNameOptions;
-            prFilterName.value = currentPRNameValue;
-        }
+                const exercises = getAllExercises();
+                const repTypes = ['Single Rep', 'Multiple Reps'];
+                let prHTML = '<div class="pr-grid">';
 
-        function updateTable() {
-            const resultsDiv = document.getElementById('resultsTable');
-            const filterName = document.getElementById('filterName').value;
-            const filterExercise = document.getElementById('filterExercise').value;
+                exercises.forEach(exercise => {
+                    repTypes.forEach(repType => {
+                        const exerciseWorkouts = personWorkouts.filter(w => w.exercise === exercise && w.repType === repType);
+                        if (exerciseWorkouts.length > 0) {
+                            const pr = exerciseWorkouts.reduce((max, w) => w.weight > max.weight ? w : max);
+                            prHTML += `
+                                <div class="pr-card">
+                                    <div class="pr-exercise">${exercise}</div>
+                                    <div class="pr-type">${repType}</div>
+                                    <div class="pr-weight">${pr.weight} kg</div>
+                                    <div style="margin-top:10px;font-size:0.9em">${new Date(pr.date).toLocaleDateString('nl-NL')}</div>
+                                </div>
+                            `;
+                        }
+                    });
+                });
 
-            let filteredWorkouts = workouts;
-
-            if (filterName) {
-                filteredWorkouts = filteredWorkouts.filter(w => w.name === filterName);
+                prHTML += '</div>';
+                prDisplay.innerHTML = prHTML;
             }
 
-            if (filterExercise) {
-                filteredWorkouts = filteredWorkouts.filter(w => w.exercise === filterExercise);
+            function updateStats() {
+                const statsDiv = document.getElementById('stats');
+                if (workouts.length === 0) {
+                    statsDiv.innerHTML = '<div class="empty-state">Nog geen resultaten toegevoegd</div>';
+                    return;
+                }
+                const totalWorkouts = workouts.length;
+                const totalWeight = workouts.reduce((sum, w) => sum + w.weight, 0);
+                const uniquePersons = [...new Set(workouts.map(w => w.name))].length;
+                statsDiv.innerHTML = `
+                    <div class="stat-card"><div class="stat-label">Totaal sessies</div><div class="stat-value">${totalWorkouts}</div></div>
+                    <div class="stat-card"><div class="stat-label">Totaal gewicht</div><div class="stat-value">${totalWeight.toFixed(1)} kg</div></div>
+                    <div class="stat-card"><div class="stat-label">Sporters</div><div class="stat-value">${uniquePersons}</div></div>
+                `;
             }
 
-            // Sorteer op datum (nieuwste eerst)
-            filteredWorkouts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-            if (filteredWorkouts.length === 0) {
-                resultsDiv.innerHTML = '<div class="empty-state">Geen resultaten gevonden</div>';
-                return;
+            function updateFilters() {
+                const uniqueNames = [...new Set(workouts.map(w => w.name))].sort();
+                document.getElementById('filterName').innerHTML = '<option value="">Alle personen</option>' +
+                    uniqueNames.map(name => `<option value="${name}">${name}</option>`).join('');
+                document.getElementById('prFilterName').innerHTML = '<option value="">Kies persoon...</option>' +
+                    uniqueNames.map(name => `<option value="${name}">${name}</option>`).join('');
             }
 
-            resultsDiv.innerHTML = `
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Datum</th>
-                            <th>Naam</th>
-                            <th>Oefening</th>
-                            <th>Type</th>
-                            <th>Gewicht</th>
-                            <th>Actie</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${filteredWorkouts.map(workout => `
-                            <tr>
-                                <td>${new Date(workout.date).toLocaleDateString('nl-NL')}</td>
-                                <td>${workout.name}</td>
-                                <td>${workout.exercise}</td>
-                                <td>${workout.repType || 'N/A'}</td>
-                                <td>${workout.weight} kg</td>
-                                <td><button class="delete-btn" onclick="deleteWorkout(${workout.id})">Verwijder</button></td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            `;
-        }
+            function updateTable() {
+                const resultsDiv = document.getElementById('resultsTable');
+                const filterName = document.getElementById('filterName').value;
+                const filterExercise = document.getElementById('filterExercise').value;
+                let filtered = workouts;
+                if (filterName) filtered = filtered.filter(w => w.name === filterName);
+                if (filterExercise) filtered = filtered.filter(w => w.exercise === filterExercise);
+                filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        // Filters
-        document.getElementById('filterName').addEventListener('change', updateTable);
-        document.getElementById('filterExercise').addEventListener('change', updateTable);
-        document.getElementById('prFilterName').addEventListener('change', updatePRs);
+                if (filtered.length === 0) {
+                    resultsDiv.innerHTML = '<div class="empty-state">Geen resultaten gevonden</div>';
+                    return;
+                }
 
-        // Initiële weergave - load data from Firebase
-        loadCustomExercises();
-        loadWorkouts();
-        updateExerciseDropdowns();
+                resultsDiv.innerHTML = `
+                    <table>
+                        <thead><tr><th>Datum</th><th>Naam</th><th>Oefening</th><th>Type</th><th>Gewicht</th><th>Actie</th></tr></thead>
+                        <tbody>
+                            ${filtered.map(w => `
+                                <tr>
+                                    <td>${new Date(w.date).toLocaleDateString('nl-NL')}</td>
+                                    <td>${w.name}</td>
+                                    <td>${w.exercise}</td>
+                                    <td>${w.repType || 'N/A'}</td>
+                                    <td>${w.weight} kg</td>
+                                    <td><button class="delete-btn" onclick="deleteWorkout(\`${w.id}\`)">Verwijder</button></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            }
+
+            document.getElementById('filterName').addEventListener('change', updateTable);
+            document.getElementById('filterExercise').addEventListener('change', updateTable);
+            document.getElementById('prFilterName').addEventListener('change', updatePRs);
+
+            updateExerciseDropdowns();
         }
     </script>
 </body>
 </html>
+
 
 
