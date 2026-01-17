@@ -346,10 +346,6 @@
             <div id="prDisplay"></div>
         </div>
 
-        <div class="card">
-            <h2>Statistieken</h2>
-            <div class="stats" id="stats"></div>
-        </div>
 
         <div class="card">
             <h2>Alle resultaten</h2>
@@ -472,7 +468,6 @@
 
             function updateDisplay() {
                 updatePRs();
-                updateStats();
                 updateTable();
                 updateFilters();
             }
@@ -516,21 +511,6 @@
                 prHTML += '</div>';
                 prDisplay.innerHTML = prHTML;
             }
-
-            function updateStats() {
-                const statsDiv = document.getElementById('stats');
-                if (workouts.length === 0) {
-                    statsDiv.innerHTML = '<div class="empty-state">Nog geen resultaten toegevoegd</div>';
-                    return;
-                }
-                const totalWorkouts = workouts.length;
-                const totalWeight = workouts.reduce((sum, w) => sum + w.weight, 0);
-                const uniquePersons = [...new Set(workouts.map(w => w.name))].length;
-                statsDiv.innerHTML = `
-                    <div class="stat-card"><div class="stat-label">Totaal sessies</div><div class="stat-value">${totalWorkouts}</div></div>
-                    <div class="stat-card"><div class="stat-label">Totaal gewicht</div><div class="stat-value">${totalWeight.toFixed(1)} kg</div></div>
-                    <div class="stat-card"><div class="stat-label">Sporters</div><div class="stat-value">${uniquePersons}</div></div>
-                `;
             }
 
             function updateFilters() {
