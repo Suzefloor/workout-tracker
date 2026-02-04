@@ -272,10 +272,9 @@
             th, td { padding: 6px 4px; }
             th { font-size: 0.5em; }
             button { font-size: 10px; }
-            
         }
 
-          .chart-container {
+        .chart-container {
             background: rgba(30, 30, 50, 0.8);
             border: 2px solid #00ccff;
             padding: 20px;
@@ -309,13 +308,13 @@
             <h2>Nieuw resultaat toevoegen</h2>
             <form id="workoutForm">
                 <div class="form-group">
-    <label for="name">Naam</label>
-    <select id="name" required>
-        <option value="">Kies...</option>
-        <option value="Fer">Fer</option>
-        <option value="Suus">Suus</option>
-    </select>
-</div>
+                    <label for="name">Naam</label>
+                    <select id="name" required>
+                        <option value="">Kies...</option>
+                        <option value="Fer">Fer</option>
+                        <option value="Suus">Suus</option>
+                    </select>
+                </div>
 
                 <div class="form-group">
                     <label for="exercise">Oefening</label>
@@ -364,29 +363,26 @@
             <div id="prDisplay"></div>
         </div>
 
- <div class="card">
-            <h2>PROGRESSIEGRAFIEK</h2>
+        <div class="card">
+            <h2>PROGRESSIE GRAFIEK</h2>
             <div class="filter-section">
-        <select id="chartFilterName">
-            <option value="">Kies persoon...</option>
-        </select>
-        <select id="chartFilterExercise">
-            <option value="">Kies oefening...</option>
-        </select>
-        <select id="chartFilterRepType">
-            <option value="">Alle types</option>
-            <option value="Single Rep">Single Rep</option>
-            <option value="Multiple Reps">Multiple Reps</option>
-        </select>
-    </div>
-    <div class="chart-container">
-        <canvas id="progressChart"></canvas>
-    </div>
+                <select id="chartFilterName">
+                    <option value="">Kies persoon...</option>
+                </select>
+                <select id="chartFilterExercise">
+                    <option value="">Kies oefening...</option>
+                </select>
+                <select id="chartFilterRepType">
+                    <option value="">Alle types</option>
+                    <option value="Single Rep">Single Rep</option>
+                    <option value="Multiple Reps">Multiple Reps</option>
+                </select>
+            </div>
+            <div class="chart-container">
+                <canvas id="progressChart"></canvas>
+            </div>
         </div>
 
-        <div class="card">
-            <h2>Alle resultaten</h2>
-        
         <div class="card">
             <h2>Alle resultaten</h2>
             <div class="filter-section">
@@ -465,10 +461,9 @@
                     exercises.map(ex => `<option value="${ex}">${ex}</option>`).join('');
 
                 const currentChartExercise = document.getElementById('chartFilterExercise').value;
-    document.getElementById('chartFilterExercise').innerHTML = '<option value="">Kies oefening...</option>' +
-        exercises.map(ex => `<option value="${ex}">${ex}</option>`).join('');
-    document.getElementById('chartFilterExercise').value = currentChartExercise;
-}
+                document.getElementById('chartFilterExercise').innerHTML = '<option value="">Kies oefening...</option>' +
+                    exercises.map(ex => `<option value="${ex}">${ex}</option>`).join('');
+                document.getElementById('chartFilterExercise').value = currentChartExercise;
             }
             
             database.ref('workouts').on('value', (snapshot) => {
@@ -568,9 +563,9 @@
                     uniqueNames.map(name => `<option value="${name}">${name}</option>`).join('');
 
                 const currentChartName = document.getElementById('chartFilterName').value;
-    document.getElementById('chartFilterName').innerHTML = '<option value="">Kies persoon...</option>' +
-        uniqueNames.map(name => `<option value="${name}">${name}</option>`).join('');
-    document.getElementById('chartFilterName').value = currentChartName;
+                document.getElementById('chartFilterName').innerHTML = '<option value="">Kies persoon...</option>' +
+                    uniqueNames.map(name => `<option value="${name}">${name}</option>`).join('');
+                document.getElementById('chartFilterName').value = currentChartName;
             }
 
             function updateTable() {
@@ -586,116 +581,6 @@
                     resultsDiv.innerHTML = '<div class="empty-state">Geen resultaten gevonden</div>';
                     return;
                 }
-
-function updateChart() {
-    const ctx = document.getElementById('progressChart').getContext('2d');
-    const filterName = document.getElementById('chartFilterName').value;
-    const filterExercise = document.getElementById('chartFilterExercise').value;
-    const filterRepType = document.getElementById('chartFilterRepType').value;
-
-    if (progressChart) {
-        progressChart.destroy();
-    }
-
-    if (!filterName || !filterExercise) {
-        progressChart = new Chart(ctx, {
-            type: 'line',
-            data: { labels: [], datasets: [] },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Selecteer een persoon en oefening',
-                        color: '#00ccff',
-                        font: { size: 14 }
-                    }
-                }
-            }
-        });
-        return;
-    }
-
-    let filteredWorkouts = workouts.filter(w => 
-        w.name === filterName && w.exercise === filterExercise
-    );
-
-    if (filterRepType) {
-        filteredWorkouts = filteredWorkouts.filter(w => w.repType === filterRepType);
-    }
-
-    filteredWorkouts.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-    if (filteredWorkouts.length === 0) {
-        progressChart = new Chart(ctx, {
-            type: 'line',
-            data: { labels: [], datasets: [] },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Geen data gevonden',
-                        color: '#ff6666',
-                        font: { size: 14 }
-                    }
-                }
-            }
-        });
-        return;
-    }
-
-    const labels = filteredWorkouts.map(w => new Date(w.date).toLocaleDateString('nl-NL'));
-    const data = filteredWorkouts.map(w => w.weight);
-
-    progressChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: `${filterExercise} (kg)`,
-                data: data,
-                borderColor: '#ffcc00',
-                backgroundColor: 'rgba(255, 204, 0, 0.2)',
-                borderWidth: 3,
-                pointBackgroundColor: '#ff6600',
-                pointBorderColor: '#ffcc00',
-                pointRadius: 6,
-                pointHoverRadius: 8,
-                fill: true,
-                tension: 0.1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: { color: '#ffffff', font: { size: 12 } }
-                },
-                title: {
-                    display: true,
-                    text: `${filterName} - ${filterExercise}${filterRepType ? ' (' + filterRepType + ')' : ''}`,
-                    color: '#ffcc00',
-                    font: { size: 14, family: "'Press Start 2P', monospace" }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: { color: '#00ccff' },
-                    grid: { color: 'rgba(0, 204, 255, 0.2)' }
-                },
-                y: {
-                    ticks: { color: '#00ccff' },
-                    grid: { color: 'rgba(0, 204, 255, 0.2)' },
-                    title: { display: true, text: 'Gewicht (kg)', color: '#ffcc00' }
-                }
-            }
-        }
-    });
-}
                 
                 resultsDiv.innerHTML = `
                     <table>
@@ -716,12 +601,122 @@ function updateChart() {
                 `;
             }
 
+            function updateChart() {
+                const ctx = document.getElementById('progressChart').getContext('2d');
+                const filterName = document.getElementById('chartFilterName').value;
+                const filterExercise = document.getElementById('chartFilterExercise').value;
+                const filterRepType = document.getElementById('chartFilterRepType').value;
+
+                if (progressChart) {
+                    progressChart.destroy();
+                }
+
+                if (!filterName || !filterExercise) {
+                    progressChart = new Chart(ctx, {
+                        type: 'line',
+                        data: { labels: [], datasets: [] },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Selecteer een persoon en oefening',
+                                    color: '#00ccff',
+                                    font: { size: 14 }
+                                }
+                            }
+                        }
+                    });
+                    return;
+                }
+
+                let filteredWorkouts = workouts.filter(w => 
+                    w.name === filterName && w.exercise === filterExercise
+                );
+
+                if (filterRepType) {
+                    filteredWorkouts = filteredWorkouts.filter(w => w.repType === filterRepType);
+                }
+
+                filteredWorkouts.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+                if (filteredWorkouts.length === 0) {
+                    progressChart = new Chart(ctx, {
+                        type: 'line',
+                        data: { labels: [], datasets: [] },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Geen data gevonden',
+                                    color: '#ff6666',
+                                    font: { size: 14 }
+                                }
+                            }
+                        }
+                    });
+                    return;
+                }
+
+                const labels = filteredWorkouts.map(w => new Date(w.date).toLocaleDateString('nl-NL'));
+                const data = filteredWorkouts.map(w => w.weight);
+
+                progressChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: `${filterExercise} (kg)`,
+                            data: data,
+                            borderColor: '#ffcc00',
+                            backgroundColor: 'rgba(255, 204, 0, 0.2)',
+                            borderWidth: 3,
+                            pointBackgroundColor: '#ff6600',
+                            pointBorderColor: '#ffcc00',
+                            pointRadius: 6,
+                            pointHoverRadius: 8,
+                            fill: true,
+                            tension: 0.1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                labels: { color: '#ffffff', font: { size: 12 } }
+                            },
+                            title: {
+                                display: true,
+                                text: `${filterName} - ${filterExercise}${filterRepType ? ' (' + filterRepType + ')' : ''}`,
+                                color: '#ffcc00',
+                                font: { size: 14, family: "'Press Start 2P', monospace" }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: { color: '#00ccff' },
+                                grid: { color: 'rgba(0, 204, 255, 0.2)' }
+                            },
+                            y: {
+                                ticks: { color: '#00ccff' },
+                                grid: { color: 'rgba(0, 204, 255, 0.2)' },
+                                title: { display: true, text: 'Gewicht (kg)', color: '#ffcc00' }
+                            }
+                        }
+                    }
+                });
+            }
+
             document.getElementById('filterName').addEventListener('change', updateTable);
             document.getElementById('filterExercise').addEventListener('change', updateTable);
             document.getElementById('prFilterName').addEventListener('change', updatePRs);
-        document.getElementById('chartFilterName').addEventListener('change', updateChart);
-document.getElementById('chartFilterExercise').addEventListener('change', updateChart);
-document.getElementById('chartFilterRepType').addEventListener('change', updateChart);
+            document.getElementById('chartFilterName').addEventListener('change', updateChart);
+            document.getElementById('chartFilterExercise').addEventListener('change', updateChart);
+            document.getElementById('chartFilterRepType').addEventListener('change', updateChart);
 
             updateExerciseDropdowns();
         }
