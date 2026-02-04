@@ -7,6 +7,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='10' width='6' height='12' fill='%23666'/><rect x='3' y='11' width='4' height='10' fill='%23ccc'/><rect x='8' y='14' width='2' height='4' fill='%23888'/><rect x='24' y='10' width='6' height='12' fill='%23666'/><rect x='25' y='11' width='4' height='10' fill='%23ccc'/><rect x='22' y='14' width='2' height='4' fill='%23888'/><rect x='10' y='15' width='12' height='2' fill='%23aaa'/><rect x='10' y='15' width='12' height='1' fill='%23ddd'/></svg>">
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
             margin: 0;
@@ -271,6 +272,18 @@
             th, td { padding: 6px 4px; }
             th { font-size: 0.5em; }
             button { font-size: 10px; }
+            
+        }
+
+          .chart-container {
+            background: rgba(30, 30, 50, 0.8);
+            border: 2px solid #00ccff;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .chart-container canvas {
+            max-height: 400px;
         }
     </style>
 </head>
@@ -351,6 +364,29 @@
             <div id="prDisplay"></div>
         </div>
 
+ <div class="card">
+            <h2>PROGRESSIEGRAFIEK</h2>
+            <div class="filter-section">
+        <select id="chartFilterName">
+            <option value="">Kies persoon...</option>
+        </select>
+        <select id="chartFilterExercise">
+            <option value="">Kies oefening...</option>
+        </select>
+        <select id="chartFilterRepType">
+            <option value="">Alle types</option>
+            <option value="Single Rep">Single Rep</option>
+            <option value="Multiple Reps">Multiple Reps</option>
+        </select>
+    </div>
+    <div class="chart-container">
+        <canvas id="progressChart"></canvas>
+    </div>
+        </div>
+
+        <div class="card">
+            <h2>Alle resultaten</h2>
+        
         <div class="card">
             <h2>Alle resultaten</h2>
             <div class="filter-section">
@@ -413,6 +449,7 @@
             
             let workouts = [];
             let customExercises = [];
+            let progressChart = null;
             
             const defaultExercises = ['Bench Press', 'Bicep', 'Chest Press', 'Deadlift', 'Hip Abduction', 'Hip Adduction', 'Lateral Pull', 'Leg Press', 'Pull Up', 'Squat', 'Tricep Push'];
             
@@ -426,6 +463,12 @@
                     exercises.map(ex => `<option value="${ex}">${ex}</option>`).join('');
                 document.getElementById('filterExercise').innerHTML = '<option value="">Alle oefeningen</option>' +
                     exercises.map(ex => `<option value="${ex}">${ex}</option>`).join('');
+
+                const currentChartExercise = document.getElementById('chartFilterExercise').value;
+    document.getElementById('chartFilterExercise').innerHTML = '<option value="">Kies oefening...</option>' +
+        exercises.map(ex => `<option value="${ex}">${ex}</option>`).join('');
+    document.getElementById('chartFilterExercise').value = currentChartExercise;
+}
             }
             
             database.ref('workouts').on('value', (snapshot) => {
@@ -474,6 +517,7 @@
                 updatePRs();
                 updateTable();
                 updateFilters();
+                updateChart();
             }
 
             function updatePRs() {
@@ -522,6 +566,11 @@
                     uniqueNames.map(name => `<option value="${name}">${name}</option>`).join('');
                 document.getElementById('prFilterName').innerHTML = '<option value="">Kies persoon...</option>' +
                     uniqueNames.map(name => `<option value="${name}">${name}</option>`).join('');
+
+                const currentChartName = document.getElementById('chartFilterName').value;
+    document.getElementById('chartFilterName').innerHTML = '<option value="">Kies persoon...</option>' +
+        uniqueNames.map(name => `<option value="${name}">${name}</option>`).join('');
+    document.getElementById('chartFilterName').value = currentChartName;
             }
 
             function updateTable() {
@@ -538,6 +587,116 @@
                     return;
                 }
 
+function updateChart() {
+    const ctx = document.getElementById('progressChart').getContext('2d');
+    const filterName = document.getElementById('chartFilterName').value;
+    const filterExercise = document.getElementById('chartFilterExercise').value;
+    const filterRepType = document.getElementById('chartFilterRepType').value;
+
+    if (progressChart) {
+        progressChart.destroy();
+    }
+
+    if (!filterName || !filterExercise) {
+        progressChart = new Chart(ctx, {
+            type: 'line',
+            data: { labels: [], datasets: [] },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Selecteer een persoon en oefening',
+                        color: '#00ccff',
+                        font: { size: 14 }
+                    }
+                }
+            }
+        });
+        return;
+    }
+
+    let filteredWorkouts = workouts.filter(w => 
+        w.name === filterName && w.exercise === filterExercise
+    );
+
+    if (filterRepType) {
+        filteredWorkouts = filteredWorkouts.filter(w => w.repType === filterRepType);
+    }
+
+    filteredWorkouts.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    if (filteredWorkouts.length === 0) {
+        progressChart = new Chart(ctx, {
+            type: 'line',
+            data: { labels: [], datasets: [] },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Geen data gevonden',
+                        color: '#ff6666',
+                        font: { size: 14 }
+                    }
+                }
+            }
+        });
+        return;
+    }
+
+    const labels = filteredWorkouts.map(w => new Date(w.date).toLocaleDateString('nl-NL'));
+    const data = filteredWorkouts.map(w => w.weight);
+
+    progressChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: `${filterExercise} (kg)`,
+                data: data,
+                borderColor: '#ffcc00',
+                backgroundColor: 'rgba(255, 204, 0, 0.2)',
+                borderWidth: 3,
+                pointBackgroundColor: '#ff6600',
+                pointBorderColor: '#ffcc00',
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                fill: true,
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: { color: '#ffffff', font: { size: 12 } }
+                },
+                title: {
+                    display: true,
+                    text: `${filterName} - ${filterExercise}${filterRepType ? ' (' + filterRepType + ')' : ''}`,
+                    color: '#ffcc00',
+                    font: { size: 14, family: "'Press Start 2P', monospace" }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: '#00ccff' },
+                    grid: { color: 'rgba(0, 204, 255, 0.2)' }
+                },
+                y: {
+                    ticks: { color: '#00ccff' },
+                    grid: { color: 'rgba(0, 204, 255, 0.2)' },
+                    title: { display: true, text: 'Gewicht (kg)', color: '#ffcc00' }
+                }
+            }
+        }
+    });
+}
+                
                 resultsDiv.innerHTML = `
                     <table>
                         <thead><tr><th>Datum</th><th>Naam</th><th>Oefening</th><th>Type</th><th>Gewicht</th><th>Actie</th></tr></thead>
@@ -560,6 +719,9 @@
             document.getElementById('filterName').addEventListener('change', updateTable);
             document.getElementById('filterExercise').addEventListener('change', updateTable);
             document.getElementById('prFilterName').addEventListener('change', updatePRs);
+        document.getElementById('chartFilterName').addEventListener('change', updateChart);
+document.getElementById('chartFilterExercise').addEventListener('change', updateChart);
+document.getElementById('chartFilterRepType').addEventListener('change', updateChart);
 
             updateExerciseDropdowns();
         }
